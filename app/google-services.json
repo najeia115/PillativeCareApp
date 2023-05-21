@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611302575891",
+    "project_id": "cloud-final-project-74fcf",
+    "storage_bucket": "cloud-final-project-74fcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611302575891:android:d35ee9c22c8d27441154e6",
+        "android_client_info": {
+          "package_name": "com.example.pillativecareapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611302575891-m9dh5kl9jdrgfas34l7unoduo0f3188u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANMiuBy7htjsRXd0XxQYW7x_m33Dj_OcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611302575891-m9dh5kl9jdrgfas34l7unoduo0f3188u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
