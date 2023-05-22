@@ -1,7 +1,9 @@
 package com.example.pillativecareapp.ui.signup
+
 import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.pillativecareapp.data.User
 import com.example.pillativecareapp.ui.base.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -10,55 +12,52 @@ class SignUpViewModel : BaseViewModel() {
 
     private val mAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var progressBar: ProgressBar
+     val currentUser : User = User("","","","","","")
+    fun signUp() {
 
-    fun setProgressBar(progressBar: ProgressBar) {
-        this.progressBar = progressBar
-    }
-
-    fun signUp(firstname: String,lastname: String, email: String, password: String, confirmPassword: String , phonenumber: String) {
-        if (firstname.isBlank() || lastname.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank() || phonenumber.isBlank()) {
-            Log.e("n", "please fill the inputs ")
-            return
-        }
-        if (password != confirmPassword) {
+        currentUser.run {
+        if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank() || phoneNumber.isBlank()) {
+            Log.e("tagsignuphere", "please fill the inputs ")
+        } else if (password != confirmPassword) {
             Log.e("n", "please confirm the password  ")
-            return
+        } else {
+            addNewUser(currentUser)
+            Log.e("SuccessYes", currentUser.toString())
         }
-        progressBar.visibility = View.VISIBLE
-
-        AddNewUser(firstname,lastname,email,password,confirmPassword,phonenumber)
+    }
     }
 
-    fun AddNewUser(firstname: String,lastname: String, email:String, password:String , confirmPassword: String , phonenumber: String){
-        mAuth.createUserWithEmailAndPassword(email, password)
+    private fun addNewUser(user: User) {
+        mAuth.createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener { task ->
+
+                Log.e("added", user.email)
                 if (task.isSuccessful) {
                     val firebaseUser = mAuth.currentUser
                     val userID = firebaseUser?.uid ?: ""
 
-                    val user = hashMapOf(
+                    Log.e("onSuccess22", "Data added successfully to database: ")
+
+                    val patient = hashMapOf(
                         "id" to userID,
-                        "firstname" to firstname,
-                        "lastname" to lastname,
-                        "email" to email,
-                        "password" to password,
-                        "phonenumber" to phonenumber,
-                        "confirmPassword" to confirmPassword
+                        "firstName" to user.firstName,
+                        "lastName" to user.lastName,
+                        "email" to user.email,
+                        "password" to user.password,
+                        "phoneNumber" to user.phoneNumber,
+                        "confirmPassword" to currentUser.confirmPassword
                     )
 
-                    db.collection("users").document(userID)
-                        .set(user)
+                    db.collection("patients").add(patient)
                         .addOnSuccessListener { documentReference ->
-                            Log.e("n", "Data added successfully to database: ")
+                            Log.e("onSuccess", "Data added successfully to database: ")
                         }
                         .addOnFailureListener { e ->
-                            Log.e("n", "Failed to add database", e)
+                            Log.e("onFailure", "Failed to add database", e)
                         }
 
-                    progressBar.setVisibility(View.GONE)
-                } else {
-                    progressBar.setVisibility(View.GONE)
+                }else{
+                    Log.e("onFailure2", "Failed to add database")
                 }
             }
     }

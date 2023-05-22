@@ -15,7 +15,7 @@ import com.example.pillativecareapp.util.observeNonNull
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     private var _binding: VDB? = null
-    protected var binding: VDB
+    protected val binding: VDB
         get() = _binding as VDB
 
     abstract val viewModel: VM
