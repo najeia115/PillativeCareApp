@@ -12,7 +12,7 @@ import com.example.pillativecareapp.BR
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     private var _binding: VDB? = null
-    protected val binding: VDB
+    protected var binding: VDB
         get() = _binding as VDB
 
     abstract val viewModel: VM
