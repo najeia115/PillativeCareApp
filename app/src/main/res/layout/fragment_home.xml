@@ -20,6 +20,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:orientation="vertical"
+            app:showWhenSuccess="@{viewModel.topics}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -31,7 +32,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenLoading="@{viewModel.topics}"/>
 
 
         <com.airbnb.lottie.LottieAnimationView
@@ -47,6 +49,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
+            app:showWhenFailure="@{viewModel.topics}"
             app:lottie_rawRes="@raw/error" />
 
         <TextView
@@ -58,6 +61,7 @@
             android:text="@string/try_again"
             android:textColor="@color/on_background_87"
             android:textSize="@dimen/text_medium"
+            app:showWhenFailure="@{viewModel.topics}"
             app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
             app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
             app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />

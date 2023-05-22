@@ -11,12 +11,12 @@
         android:title="@string/search" />
 
     <item
-        android:id="@+id/latestSeriesFragment"
+        android:id="@+id/chatFragment"
         android:icon="@drawable/ic_chat"
         android:title="@string/chat"/>
 
     <item
-        android:id="@+id/storiesFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_user_profile"
         android:title="@string/profile"/>
 </menu>

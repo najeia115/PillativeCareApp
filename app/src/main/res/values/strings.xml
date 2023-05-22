@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PillativeCareApp</string>
-    <string name="password_validate" >Password must be at least 8 characters long</string>
-    <string name="username_validate" >Username must be at least 4 characters long</string>
+    <string name="password_validate">Password must be at least 8 characters long</string>
+    <string name="username_validate">Username must be at least 4 characters long</string>
     <string name="if_you_don_t_have_an_account">if you don\'t have an account</string>
     <string name="register">Register</string>
     <string name="confirm_password">Confirm Password</string>

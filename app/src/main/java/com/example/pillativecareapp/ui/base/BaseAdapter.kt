@@ -29,12 +29,12 @@ abstract class BaseAdapter<T>(
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val currentItem = items[position]
-//        when (holder) {
-//            is ItemViewHolder -> {
-//                holder.binding.setVariable(BR.item, currentItem)
-//                holder.binding.setVariable(BR.listener, listener)
-//            }
-//        }
+        when (holder) {
+            is ItemViewHolder -> {
+                holder.binding.setVariable(BR.item, currentItem)
+                holder.binding.setVariable(BR.listener, listener)
+            }
+        }
     }
 
     open fun setItems(newItems: List<T>) {
