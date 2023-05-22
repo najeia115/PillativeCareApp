@@ -12,4 +12,5 @@ class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>() {
         get() = R.layout.fragment_login
 
 
+
 }

@@ -1,7 +1,11 @@
 package com.example.pillativecareapp.data
 
 data class User(
-    val fullName : String,
-    val userName: String,
-    val password : String
+    val FirstName : String,
+    val LastName: String,
+    val Email: String ,
+    val Password : String,
+    val ConfirmPassword: String,
+    val PhoneNumber :String
+
 )

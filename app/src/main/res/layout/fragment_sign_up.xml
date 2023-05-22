@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="com.example.pillativecareapp.data.User" />
         <variable
             name="viewModel"
             type="com.example.pillativecareapp.ui.signup.SignUpViewModel" />
@@ -251,7 +253,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_layout_confirm_password"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="172dp" />
+            tools:layout_editor_absoluteY="172dp"
+            android:onClick="@{() -> viewModel.signUp(item.firstName.toString(), item.lastName.toString(),item.email.toString() ,item.password.toString(), item.confirmPassword.toString() , item.phoneNumber.toString())}"
+            />
 
         <TextView
             android:id="@+id/text_view_do_you_have_an_account"
