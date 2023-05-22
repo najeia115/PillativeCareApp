@@ -56,6 +56,9 @@
     <style name="TextStyle.TitleLarge">
         <item name="android:textSize">@dimen/text_large</item>
     </style>
+    <style name="TextStyle.TitleExtraLarge">
+        <item name="android:textSize">@dimen/text_giant</item>
+    </style>
 
     <style name="TextStyle.BodyMedium.EditTextStyle">
         <item name="android:textColor">@color/on_background_60</item>

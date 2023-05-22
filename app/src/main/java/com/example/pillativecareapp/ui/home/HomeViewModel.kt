@@ -1,15 +1,18 @@
 package com.example.pillativecareapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.pillativecareapp.data.Status
 import com.example.pillativecareapp.data.Topic
 import com.example.pillativecareapp.ui.base.BaseViewModel
 import com.example.pillativecareapp.ui.core.listener.TopicListener
+import com.example.pillativecareapp.util.FirestoreUtils
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeViewModel :  BaseViewModel(), TopicListener {
 
+    private lateinit var firestore: FirebaseFirestore
     private val _topics = MutableLiveData<Status<List<Topic>>>()
     val topics: LiveData<Status<List<Topic>>>
         get() = _topics
@@ -23,18 +26,22 @@ class HomeViewModel :  BaseViewModel(), TopicListener {
     }
 
     private fun getTopics() {
-//        _topics.postValue(Status.Loading)
-        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-        val topicsCollection = db.collection("topics")
+
+        _topics.postValue(Status.Loading)
+        firestore = FirebaseFirestore.getInstance()
+        val topicsCollection = firestore.collection("topics")
 
         topicsCollection.get()
             .addOnSuccessListener { result ->
                 val topicList = mutableListOf<Topic>()
                 for (document in result) {
-                    val topic = document.toObject(Topic::class.java)
-                    topicList.add(topic)
+                    val topic = FirestoreUtils.getTopicFromDocument(document)
+                    if (topic != null) {
+                        topicList.add(topic)
+                    }
                 }
                 val status = Status.Success(topicList)
+                Log.e("najeia", status.data.toString())
                 onTopicsSuccess(status)
             }
             .addOnFailureListener { exception ->
@@ -45,7 +52,7 @@ class HomeViewModel :  BaseViewModel(), TopicListener {
     private fun onTopicsSuccess(status: Status<List<Topic>>) {
         status.toData()?.let {
             _topics.postValue(Status.Success(it))
-        } ?: _topics.postValue(Status.Failure("No Cashed Data"))
+        }
     }
 
     private fun onFailure(throwable: Throwable) {

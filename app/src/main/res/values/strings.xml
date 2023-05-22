@@ -16,4 +16,5 @@
     <string name="try_again">Try Again</string>
     <string name="last_name">Last Name</string>
     <string name="mobile_number">Mobile Number</string>
+    <string name="topics">Topics</string>
 </resources>

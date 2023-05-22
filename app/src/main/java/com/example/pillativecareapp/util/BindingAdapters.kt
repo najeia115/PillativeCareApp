@@ -65,15 +65,11 @@ fun View.isVisible(isVisible: Boolean?) {
 //endregion
 
 
-@BindingAdapter("app:imageUrl")
-fun loadImage(imageView: ShapeableImageView, topic: Topic?) {
-    topic?.let {
-        val imageUrl = topic.imageURL
-        Glide.with(imageView.context)
-            .load(imageUrl)
-            .thumbnail(Glide.with(imageView.context).load(R.raw.loading))
-            .fitCenter()
-            .centerCrop()
-            .into(imageView)
-    }
+@BindingAdapter("imageUrl")
+fun ShapeableImageView.loadImage(imageUrl: String?) {
+    Glide.with(context)
+        .load(imageUrl)
+//        .placeholder(R.raw.loading)
+//        .error(R.raw.error)
+        .into(this)
 }
