@@ -20,7 +20,8 @@
         android:layout_marginHorizontal="@dimen/spacing_medium"
         android:layout_marginVertical="@dimen/spacing_tiny"
         android:backgroundTint="@color/primary_container"
-        app:cardCornerRadius="@dimen/spacing_small">
+        app:cardCornerRadius="@dimen/spacing_small"
+        android:onClick="@{() -> listener.onClickTopic(item.id)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

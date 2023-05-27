@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.topicDetails.TopicDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.pillativecareapp.ui.topicDetails.TopicDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.topicDetails.TopicDetailsFragment">
 
-</FrameLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_gravity="top"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginVertical="@dimen/spacing_medium"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.topic.toData().image}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/topicTitle"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@{viewModel.topic.toData().title}"
+            app:layout_constraintStart_toEndOf="@id/image_view_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/text_view_doctor_name"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:fontFamily="@font/lato"
+            android:text="@{viewModel.topic.toData().doctorName}"
+            android:textColor="@color/on_background_60"
+            app:layout_constraintStart_toEndOf="@id/image_view_thumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/topicTitle"
+            tools:text="@tools:sample/lorem" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_subscribe"
+            style="@style/TextStyle.TitleSmall"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/height_giant"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/shape_corner_radius"
+            android:text="@string/subscribe"
+            android:textAllCaps="false"
+            android:textColor="@color/on_primary"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@id/image_view_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/text_view_doctor_name" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:fontFamily="@font/lato"
+            android:text="@{viewModel.topic.toData().description}"
+            android:textColor="@color/on_background_87"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_subscribe"
+            tools:text="@tools:sample/lorem" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

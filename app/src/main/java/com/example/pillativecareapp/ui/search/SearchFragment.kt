@@ -1,14 +1,29 @@
 package com.example.pillativecareapp.ui.search
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.pillativecareapp.R
+import com.example.pillativecareapp.databinding.FragmentSearchBinding
+import com.example.pillativecareapp.ui.base.BaseFragment
+import com.example.pillativecareapp.ui.search.adapter.SearchAdapter
+import com.example.pillativecareapp.util.observeNonNull
 
-class SearchFragment : Fragment() {
+class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
+    override val viewModel: SearchViewModel by viewModels()
+    override val layoutIdFragment: Int = R.layout.fragment_search
+    private lateinit var adapter: SearchAdapter
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = SearchAdapter(emptyList(), viewModel)
+        binding.recyclerView.adapter = adapter
+        viewModel.loadData()
+        viewModel.state.observeNonNull(viewLifecycleOwner) {
+            it.toData()?.let {
+                adapter.setItems(it.topics)
+            }
+        }
+    }
 
 }

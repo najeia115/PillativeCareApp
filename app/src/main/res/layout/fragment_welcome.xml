@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.pillativecareapp.ui.welcome.WelcomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.welcome.WelcomeFragment">
+
+        <ImageView
+            android:id="@+id/logo_icon"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="48dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_welcome"
+            style="@style/TextStyle.TitleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_giant"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:text="Which type of user you are?"
+            android:textColor="@color/on_background_87"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_icon" />
+
+        <TextView
+            android:id="@+id/text_view_subtitle"
+            style="@style/TextStyle.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="Choose your user type to continue"
+            android:textColor="@color/on_background_38"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_welcome" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_patient"
+            style="@style/TextStyle.TitleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_field"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/shape_corner_radius"
+            android:text="@string/patient_user"
+            android:textAllCaps="false"
+            android:textColor="@color/on_primary"
+            android:visibility="visible"
+            android:onClick="@{() -> viewModel.onClickPatientButton()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_subtitle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_doctor"
+            style="@style/TextStyle.TitleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_field"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:background="@drawable/shape_corner_radius"
+            android:text="@string/doctor_user"
+            android:onClick="@{() -> viewModel.onClickDoctorButton()}"
+            android:textAllCaps="false"
+            android:textColor="@color/on_primary"
+            android:visibility="visible"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_patient" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -17,4 +17,8 @@
     <string name="last_name">Last Name</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="topics">Topics</string>
+    <string name="login_btn_label">Login</string>
+    <string name="patient_user">Patient</string>
+    <string name="doctor_user">Doctor</string>
+    <string name="subscribe">Subscribe</string>
 </resources>

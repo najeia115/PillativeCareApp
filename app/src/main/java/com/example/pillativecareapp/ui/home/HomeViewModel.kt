@@ -59,7 +59,7 @@ class HomeViewModel :  BaseViewModel(), TopicListener {
         _topics.postValue(Status.Failure(throwable.message.toString()))
     }
 
-    override fun onClickTopic(id: Int) {
-  //      navigate(HomeFragmentDirections.actionHomeFragmentToChatFragment(id))
+    override fun onClickTopic(id: String) {
+        navigate(HomeFragmentDirections.actionHomeFragmentToTopicDetailsFragment(id))
     }
 }

@@ -1,14 +1,21 @@
 package com.example.pillativecareapp.ui.topicDetails
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.pillativecareapp.R
+import com.example.pillativecareapp.databinding.FragmentTopicDetailsBinding
+import com.example.pillativecareapp.ui.base.BaseFragment
 
-class TopicDetailsFragment : Fragment() {
+class TopicDetailsFragment : BaseFragment<FragmentTopicDetailsBinding, TopicDetailsViewModel>() {
+    override val viewModel: TopicDetailsViewModel by viewModels()
+    override val layoutIdFragment: Int = R.layout.fragment_topic_details
+    private val args: TopicDetailsFragmentArgs by navArgs()
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.topicId = args.id
+        viewModel.loadData()
+    }
 }
