@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
-import com.example.pillativecareapp.R
 import com.example.pillativecareapp.data.Status
-import com.example.pillativecareapp.data.Topic
-import com.example.pillativecareapp.ui.base.BaseAdapter
+import com.example.pillativecareapp.patientSide.base.BaseAdapter
 import com.google.android.material.imageview.ShapeableImageView
 
 //region recycler

@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.pillativecareapp.ui.search.SearchViewModel" />
+            type="com.example.pillativecareapp.patientSide.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.search.view.SearchFragment">
+        tools:context=".patientSide.search.view.SearchFragment">
 
         <TextView
             style="@style/TextAppearance.Material3.BodyMedium"

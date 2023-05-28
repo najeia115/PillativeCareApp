@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.pillativecareapp.ui.login.LoginViewModel" />
+            type="com.example.pillativecareapp.patientSide.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

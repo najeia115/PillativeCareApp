@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.pillativecareapp.ui.topicDetails.TopicDetailsViewModel" />
+            type="com.example.pillativecareapp.patientSide.topicDetails.TopicDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.topicDetails.TopicDetailsFragment">
+        tools:context=".patientSide.topicDetails.TopicDetailsFragment">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_view_thumbnail"

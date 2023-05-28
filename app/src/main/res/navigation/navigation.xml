@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.pillativecareapp.ui.home.HomeFragment"
+        android:name="com.example.pillativecareapp.patientSide.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -26,22 +26,22 @@
 
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.pillativecareapp.ui.chat.ChatFragment"
+        android:name="com.example.pillativecareapp.patientSide.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.pillativecareapp.ui.search.SearchFragment"
+        android:name="com.example.pillativecareapp.patientSide.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.pillativecareapp.ui.profile.ProfileFragment"
+        android:name="com.example.pillativecareapp.patientSide.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.pillativecareapp.ui.login.LoginFragment"
+        android:name="com.example.pillativecareapp.patientSide.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.pillativecareapp.ui.signup.SignUpFragment"
+        android:name="com.example.pillativecareapp.patientSide.signup.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.pillativecareapp.ui.welcome.WelcomeFragment"
+        android:name="com.example.pillativecareapp.patientSide.welcome.WelcomeFragment"
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
@@ -88,10 +88,14 @@
         android:id="@+id/doctorsHomeFragment"
         android:name="com.example.pillativecareapp.doctorSide.home.DoctorsHomeFragment"
         android:label="DoctorsHomeFragment"
-        tools:layout="@layout/fragment_doctors_home"/>
+        tools:layout="@layout/doctors_home_fragment">
+        <argument
+            android:name="Email"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/topicDetailsFragment"
-        android:name="com.example.pillativecareapp.ui.topicDetails.TopicDetailsFragment"
+        android:name="com.example.pillativecareapp.patientSide.topicDetails.TopicDetailsFragment"
         android:label="TopicDetailsFragment"
         tools:layout="@layout/fragment_topic_details">
         <argument

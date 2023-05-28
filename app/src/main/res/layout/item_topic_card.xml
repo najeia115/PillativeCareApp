@@ -10,7 +10,7 @@
 
         <variable
             name="listener"
-            type="com.example.pillativecareapp.ui.core.listener.TopicListener" />
+            type="com.example.pillativecareapp.patientSide.core.listener.TopicListener" />
 
     </data>
 
